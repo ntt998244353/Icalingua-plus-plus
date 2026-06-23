@@ -1,4 +1,4 @@
-const packageJson = require('../icalingua/package.json')
+﻿const packageJson = require('../icalingua/package.json')
 const fs = require('fs')
 const core = require('@actions/core')
 
@@ -51,4 +51,4 @@ fs.writeFileSync('icalingua/static/version.json',
     JSON.stringify({commitId, ref, isProduction, buildTime, version}), 'utf-8')
 
 fs.writeFileSync('icalingua/package.json',
-    JSON.stringify(packageJson), 'utf-8')
+    JSON.stringify(packageJson, null, 4) + '\n', 'utf-8')

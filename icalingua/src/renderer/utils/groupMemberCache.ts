@@ -44,6 +44,7 @@ class GroupMemberCache {
     async preloadAllGroups(groupIds: number[]): Promise<void> {
         for (const groupId of groupIds) {
             await this.getGroupMembers(Math.abs(groupId)).catch(() => [])
+			await sleep(Math.random()*60000)
         }
         console.log(`Preloaded ${groupIds.length} groups' member lists`)
     }

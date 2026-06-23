@@ -48,7 +48,7 @@ core.setOutput('arch-version', version.replace(/-/g, '_'))
 core.setOutput('pkg-name', `icalingua${isProduction ? '' : '-beta'}`)
 
 fs.writeFileSync('icalingua/static/version.json',
-    JSON.stringify({commitId, ref, isProduction, buildTime, version}), 'utf-8')
+    JSON.stringify({commitId, ref, isProduction, buildTime, version}, null, 2), 'utf-8')
 
 fs.writeFileSync('icalingua/package.json',
-    JSON.stringify(packageJson), 'utf-8')
+    JSON.stringify(packageJson, null, 2) + '\n', 'utf-8')

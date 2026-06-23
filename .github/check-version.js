@@ -15,14 +15,14 @@ Date.prototype.format = function (fmt) {
     if (/(y+)/.test(fmt)) {
         fmt = fmt.replace(
             RegExp.$1,
-            (this.getFullYear() + '').substr(4 - RegExp.$1.length),
+            (this.getFullYear() + '''').substr(4 - RegExp.$1.length),
         )
     }
     for (var k in o) {
         if (new RegExp('(' + k + ')').test(fmt)) {
             fmt = fmt.replace(
                 RegExp.$1,
-                RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length),
+                RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('''''' + o[k]).length),
             )
         }
     }
@@ -45,10 +45,10 @@ buildTime: ${buildTime}
 version: ${version}`)
 
 core.setOutput('arch-version', version.replace(/-/g, '_'))
-core.setOutput('pkg-name', `icalingua${isProduction ? '' : '-beta'}`)
+core.setOutput('pkg-name', `icalingua${isProduction ? '''''' : '-beta'}`)
 
 fs.writeFileSync('icalingua/static/version.json',
     JSON.stringify({commitId, ref, isProduction, buildTime, version}), 'utf-8')
 
 fs.writeFileSync('icalingua/package.json',
-    JSON.stringify(packageJson, null, 4) + '\n', 'utf-8')
+    JSON.stringify(packageJson, null, 4) + '''\n'''', 'utf-8')
